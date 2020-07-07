@@ -14,7 +14,6 @@
 1) Поместить Resetscore.smx по пути \addons\sourcemod\plugins
 2) (Не обязательно) Поместить Resetscore.sp по пути \addons\sourcemod\scripting
 3) Прописать в server.cfg
-Pawn:
 sm_resetscore "1" // 1 - включает,0 - отключает плагин.
 4) Перезапустить сервер и наслаждаться работой плагина
 
