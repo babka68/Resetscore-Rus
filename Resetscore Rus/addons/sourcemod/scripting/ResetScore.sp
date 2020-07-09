@@ -46,7 +46,7 @@ public Action PerformCommand(int client, int args)
 	StripQuotes(buffer);
 	TrimString(buffer);
 	
-	if (StrEqual(buffer, "!rs") && StrEqual(buffer, "!кы") && StrEqual(buffer, "!resetscore") && StrEqual(buffer, "!куыуесщку"))
+	if (strcmp(buffer, "!rs") && strcmp(buffer, "!кы") && strcmp(buffer, "!resetscore") && strcmp(buffer, "!куыуесщку"))
 		return Plugin_Continue;
 	
 	if (GetClientDeaths(client) == 0 && GetClientFrags(client) == 0)
