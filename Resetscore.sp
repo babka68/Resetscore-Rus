@@ -10,7 +10,7 @@ public Plugin myinfo =
 {
 	name = "ResetScore", 
 	author = "tuty,babka68", 
-	description = "Обнуление счета Убийств и смертей игрокоа", 
+	description = "Обнуление счета Убийств и смертей игроков", 
 	version = "1.2", 
 	url = "http://tmb-css.ru https://hlmod.ru"
 };
