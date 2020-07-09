@@ -1,0 +1,17 @@
+﻿"Phrases"
+{
+    "Notification_chat"
+    {
+        "en"            "{lime}[ResetScore] {white} Type in chat !rs,!кы,!resetscore,!куыуесщку to reset the score."
+    }
+
+    "reset_already_chat"
+    {
+        "en"            "{lime}[ResetScore] {white} Your account has already been reset!"
+    }
+
+    "reset_success"
+    {
+        "en"            "{lime}[ResetScore] {white} You have successfully reseted your score."
+    }
+}
