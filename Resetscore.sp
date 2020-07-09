@@ -1,66 +1,68 @@
 #include <sourcemod>
 #include <morecolors>
 
+#pragma newdecls required
 #pragma semicolon 1
 
-Handle gPluginEnabled = INVALID_HANDLE;
+Handle Notification_Chat;
 
 public Plugin myinfo = 
 {
 	name = "ResetScore", 
 	author = "tuty,babka68", 
-	description = "Обнуление  счета (Убийств и смертей) игроков", 
-	version = "1.1", 
-	url = "http://tmb-css.ru/, https://hlmod.ru/"
+	description = "Обнуление счета Убийств и смертей игрокоа", 
+	version = "1.2", 
+	url = "http://tmb-css.ru https://hlmod.ru"
 };
-public OnPluginStart()
+public void OnPluginStart()
 {
-	RegConsoleCmd("say", CommandSay);
-	RegConsoleCmd("say_team", CommandSay);
+	LoadTranslations("ResetScore.phrases");
 	
-	gPluginEnabled = CreateConVar("sm_resetscore", "1", "1 - включает,0 - отключает плагин.");
+	RegConsoleCmd("say", PerformCommand);
+	RegConsoleCmd("say_team", PerformCommand);
+	Notification_Chat = CreateConVar("sm_Notification_Chat", "1", "// 1 - Включает, 0 - Отключить уведомление от плагина.");
 }
-public Action CommandSay(id, args)
+
+public void OnClientPutInServer(int client)
 {
-	char Said[128];
-	GetCmdArgString(Said, sizeof(Said) - 1);
-	StripQuotes(Said);
-	TrimString(Said);
-	
-	if (StrEqual(Said, "!rs") || StrEqual(Said, "!кы") || StrEqual(Said, "!resetscore") || StrEqual(Said, "!куыуесщку"))
+	if (GetConVarInt(Notification_Chat) == 1)
 	{
-		if (GetConVarInt(gPluginEnabled) == 0)
-		{
-			CPrintToChat(id, "{lime}[ResetScore] {fullred} Плагин отключен!", FCVAR_NOTIFY | FCVAR_REPLICATED);
-			
-			return Plugin_Continue;
-		}
-		
-		if (GetClientDeaths(id) == 0 && GetClientFrags(id) == 0)
-		{
-			CPrintToChat(id, "{lime}[ResetScore] {fullred} Ваш {white} счет равен 0!");
-			
-			return Plugin_Continue;
-		}
-		
-		SetClientFrags(id, 0);
-		SetClientDeaths(id, 0);
-		
-		char Name[32];
-		GetClientName(id, Name, sizeof(Name) - 1);
-		
-		CPrintToChat(id, "{lime}[ResetScore] {fullred} Вы {white} успешно сбросили счет!");
+		CreateTimer(15.0, TimerNotification, client);
+	}
+}
+
+public Action TimerNotification(Handle timer, any client)
+{
+	if (IsClientInGame(client))
+	{
+		CPrintToChat(client, "%t", "Notification_chat");
+	}
+}
+
+public Action PerformCommand(int client, int args)
+{
+	char buffer[128];
+	GetCmdArgString(buffer, sizeof(buffer));
+	StripQuotes(buffer);
+	TrimString(buffer);
+	
+	if (StrEqual(buffer, "!rs") && StrEqual(buffer, "!кы") && StrEqual(buffer, "!resetscore") && StrEqual(buffer, "!куыуесщку"))
+		return Plugin_Continue;
+	
+	if (GetClientDeaths(client) == 0 && GetClientFrags(client) == 0)
+	{
+		CPrintToChat(client, "%t", "reset_already_chat");
+		return Plugin_Continue;
 	}
 	
+	SetEntProp(client, Prop_Data, "m_iFrags", 0);
+	SetEntProp(client, Prop_Data, "m_iDeaths", 0);
+	
+	CPrintToChat(client, "%t", "reset_success");
+	
+	GetClientName(client, buffer, sizeof(buffer));
+	for (int i = 1; i <= MaxClients; i++)if (i != client && IsClientInGame(i) && !IsFakeClient(i))
+		
+	CPrintToChat(client, "%t", "reset_success", buffer);
 	return Plugin_Continue;
-}
-stock SetClientFrags(index, frags)
-{
-	SetEntProp(index, Prop_Data, "m_iFrags", frags);
-	return 1;
-}
-stock SetClientDeaths(index, deaths)
-{
-	SetEntProp(index, Prop_Data, "m_iDeaths", deaths);
-	return 1;
 }
