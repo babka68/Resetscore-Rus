@@ -4,65 +4,68 @@
 #pragma newdecls required
 #pragma semicolon 1
 
-Handle Notification_Chat;
+ConVar g_NotificationChat;
 
 public Plugin myinfo = 
 {
 	name = "ResetScore", 
-	author = "tuty,babka68", 
+	author = "tuty, babka68", 
 	description = "Обнуление счета Убийств и смертей игроков", 
-	version = "1.2", 
+	version = "1.3", 
 	url = "http://tmb-css.ru https://hlmod.ru"
 };
 public void OnPluginStart()
 {
 	LoadTranslations("ResetScore.phrases");
 	
-	RegConsoleCmd("say", PerformCommand);
-	RegConsoleCmd("say_team", PerformCommand);
-	Notification_Chat = CreateConVar("sm_Notification_Chat", "1", "// 1 - Включает, 0 - Отключить уведомление от плагина.");
+	AddCommandListener(PerformCommand, "say");
+	AddCommandListener(PerformCommand, "say_team");
+	g_NotificationChat = CreateConVar("sm_notification_chat", "1", "// 1 - Включает, 0 - Отключить уведомление от плагина в чат.", _, true, 0.0, true, 1.0);
 }
 
-public void OnClientPutInServer(int client)
+public void OnClientPutInServer(int iClient)
 {
-	if (GetConVarInt(Notification_Chat) == 1)
-	{
-		CreateTimer(15.0, TimerNotification, client);
-	}
+	if (g_NotificationChat.BoolValue)
+		CreateTimer(15.0, Timer_Notification, iClient);
 }
 
-public Action TimerNotification(Handle timer, any client)
+public Action Timer_Notification(Handle hTimer, any iClient)
 {
-	if (IsClientInGame(client))
-	{
-		CPrintToChat(client, "%t", "Notification_chat");
-	}
-}
-
-public Action PerformCommand(int client, int args)
-{
-	char buffer[128];
-	GetCmdArgString(buffer, sizeof(buffer));
-	StripQuotes(buffer);
-	TrimString(buffer);
+	if (IsClientInGame(iClient))
+		CPrintToChat(iClient, "%t", "Notification_chat");
 	
-	if (strcmp(buffer, "!rs") && strcmp(buffer, "!кы") && strcmp(buffer, "!resetscore") && strcmp(buffer, "!куыуесщку"))
+	return Plugin_Continue;
+}
+
+public Action PerformCommand(int iClient, const char[] szCmd, int iArgs)
+{
+	char szBuffer[MAX_NAME_LENGTH];
+	GetCmdArgString(szBuffer, sizeof(szBuffer));
+	StripQuotes(szBuffer);
+	TrimString(szBuffer);
+	
+	if (strcmp(szBuffer, "!rs") && strcmp(szBuffer, "!кы") && strcmp(szBuffer, "!resetscore") && strcmp(szBuffer, "!куыуесщку"))
 		return Plugin_Continue;
-	
-	if (GetClientDeaths(client) == 0 && GetClientFrags(client) == 0)
 	{
-		CPrintToChat(client, "%t", "reset_already_chat");
-		return Plugin_Continue;
-	}
-	
-	SetEntProp(client, Prop_Data, "m_iFrags", 0);
-	SetEntProp(client, Prop_Data, "m_iDeaths", 0);
-	
-	CPrintToChat(client, "%t", "reset_success");
-	
-	GetClientName(client, buffer, sizeof(buffer));
-	for (int i = 1; i <= MaxClients; i++)if (i != client && IsClientInGame(i) && !IsFakeClient(i))
+		if (GetClientDeaths(iClient) == 0 && GetClientFrags(iClient) == 0)
+		{
+			CPrintToChat(iClient, "%t", "reset_already_chat");
+			return Plugin_Continue;
+		}
 		
-	CPrintToChat(client, "%t", "reset_success", buffer);
+		SetEntProp(iClient, Prop_Data, "m_iFrags", 0);
+		SetEntProp(iClient, Prop_Data, "m_iDeaths", 0);
+		CPrintToChat(iClient, "%t", "reset_success_chat");
+		
+		
+		GetClientName(iClient, szBuffer, sizeof(szBuffer));
+		for (int i = 1; i <= MaxClients; i++)
+		
+		if (i != iClient && IsClientInGame(i) && !IsFakeClient(i))
+		{
+			CPrintToChat(iClient, "%t", "reset_success_chat", szBuffer);
+			return Plugin_Continue;
+		}
+	}
 	return Plugin_Continue;
 }
