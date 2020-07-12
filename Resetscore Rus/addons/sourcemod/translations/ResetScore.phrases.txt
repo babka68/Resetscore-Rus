@@ -1,8 +1,8 @@
-﻿"Phrases"
+"Phrases"
 {
     "Notification_chat"
     {
-        "en"            "{lime}[ResetScore] {white} Type in chat !rs,!кы,!resetscore,!куыуесщку to reset the score."
+        "en"            "{lime}[ResetScore] {white} Type in chat !rs,!resetscore to reset the score."
     }
 
     "reset_already_chat"
