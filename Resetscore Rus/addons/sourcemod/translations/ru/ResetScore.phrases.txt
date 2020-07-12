@@ -10,7 +10,7 @@
 		"ru"            "{lime}[ResetScore] {white} Ваш счёт уже обнулён!"
     }
 
-    "reset_success"
+    "reset_success_chat"
     {
 		"ru"            "{lime}[ResetScore] {white} Вы успешно обнулили свой счёт."
     }
