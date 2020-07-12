@@ -10,7 +10,7 @@
         "en"            "{lime}[ResetScore] {white} Your account has already been reset!"
     }
 
-    "reset_success"
+    "reset_success_chat"
     {
         "en"            "{lime}[ResetScore] {white} You have successfully reseted your score."
     }
