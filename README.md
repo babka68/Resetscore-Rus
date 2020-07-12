@@ -1,17 +1,16 @@
-# ResetScore 1.2
+# ResetScore 1.3
 Описание: Обнуление счета Убийств и смертей игроков.
 
 Команды: !rs, !кы, !resetscore, !куыуесщку.
 
 Cvar:
-sm_Notification_Chat "1" // 1 - Включает, 0 - Отключить уведомление о доступных командах от плагина.
+sm_notification_chat "1" // 1 - Включает, 0 - Отключить уведомление о доступных командах от плагина.
 Установка:
-1) Поместить Resetscore.smx по пути \addons\sourcemod\plugins
-2) (Не обязательно) Поместить Resetscore.sp по пути \addons\sourcemod\scripting
+1) Поместить ResetScore.smx по пути \addons\sourcemod\plugins
+2) (Не обязательно) Поместить ResetScore.sp по пути \addons\sourcemod\scripting
 3) Поместить ResetScore.phrases по пути \addons\sourcemod\translations
 4) Прописать в server.cfg
-Pawn:
-sm_Notification_Chat "1" // 1 - Включает, 0 - Отключить уведомление о доступных командах от плагина.
+sm_notification_chat "1" // 1 - Включает, 0 - Отключить уведомление о доступных командах от плагина.
 5) Перезапустить сервер и наслаждаться работой плагина
 
 Обновление 1.1
@@ -29,3 +28,20 @@ sm_Notification_Chat "1" // 1 - Включает, 0 - Отключить уве�
 - Убран ConVar sm_resetscore "1" // 1 - включает,0 - отключает плагин.
 - Добавлен ConVar sm_Notification_Chat "1" // 1 - Включает, 0 - Отключить уведомление от плагина.
 - Еще куча доработок.
+
+Обновление 1.3
+Мини оптимизация:
+- Изменены фразы перевода 
+reset_success => eset_success_chat
+- Изменен  объявление переменной
+Handle Notification_Chat; => ConVar g_NotificationChat;
+- Изменил регистрацию команд
+RegConsoleCmd("say", PerformCommand); => AddCommandListener(PerformCommand, "say");
+RegConsoleCmd("say_team", PerformCommand); => (PerformCommand, "say_team");
+- Изменил названия переменной
+Notification_Chat = CreateConVar("sm_Notification_Chat", =>  g_NotificationChat = CreateConVar("sm_notification_chat",
+- В некоторых местах добавлена return Plugin_Continue;
+- Изменил размер буфера char buffer[128];  => char szBuffer[MAX_NAME_LENGTH];
+- Изменил для "красоты" client => iClient
+- Изменил для "красоты" buffer => szBuffer
+- Изменил для "красоты"TimerNotification(Handle timer, any client) =>  Timer_Notification(Handle hTimer, any iClient)
