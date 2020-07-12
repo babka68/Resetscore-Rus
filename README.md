@@ -33,7 +33,7 @@ sm_notification_chat "1" // 1 - Включает, 0 - Отключить уве�
 Мини оптимизация:
 - Изменены фразы перевода 
 reset_success => eset_success_chat
-- Изменен  объявление переменной
+- Изменил объявление переменной
 Handle Notification_Chat; => ConVar g_NotificationChat;
 - Изменил регистрацию команд
 RegConsoleCmd("say", PerformCommand); => AddCommandListener(PerformCommand, "say");
