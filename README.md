@@ -1,4 +1,4 @@
-# ResetScore 1.3
+# ResetScore 1.4
 Описание: Обнуление счета Убийств и смертей игроков.
 
 Команды: !rs, !кы, !resetscore, !куыуесщку.
@@ -45,6 +45,7 @@ Notification_Chat = CreateConVar("sm_Notification_Chat", =>  g_NotificationChat 
 - Изменил для "красоты" client => iClient
 - Изменил для "красоты" buffer => szBuffer
 - Изменил для "красоты"TimerNotification(Handle timer, any client) =>  Timer_Notification(Handle hTimer, any iClient)
+
 Обновление 1.4
 Исправлен error log "[SM] Exception reported: Client 17 is not in game"
 Добавил проверки:
