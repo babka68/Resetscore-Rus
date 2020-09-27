@@ -11,7 +11,7 @@ public Plugin myinfo =
 	name = "ResetScore", 
 	author = "tuty, babka68", 
 	description = "Обнуление счета Убийств и смертей игроков", 
-	version = "1.3", 
+	version = "1.4", 
 	url = "http://tmb-css.ru https://hlmod.ru"
 };
 public void OnPluginStart()
@@ -47,7 +47,7 @@ public Action PerformCommand(int iClient, const char[] szCmd, int iArgs)
 	if (strcmp(szBuffer, "!rs") && strcmp(szBuffer, "!кы") && strcmp(szBuffer, "!resetscore") && strcmp(szBuffer, "!куыуесщку"))
 		return Plugin_Continue;
 	{
-		if (GetClientDeaths(iClient) == 0 && GetClientFrags(iClient) == 0)
+		if (GetClientDeaths(iClient) == 0 && IsClientInGame(iClient) && !IsFakeClient(iClient) && GetClientFrags(iClient) == 0)
 		{
 			CPrintToChat(iClient, "%t", "reset_already_chat");
 			return Plugin_Continue;
@@ -63,7 +63,7 @@ public Action PerformCommand(int iClient, const char[] szCmd, int iArgs)
 		
 		if (i != iClient && IsClientInGame(i) && !IsFakeClient(i))
 		{
-			CPrintToChat(iClient, "%t", "reset_success_chat", szBuffer);
+			CPrintToChat(iClient, "%t", "reset_success_chat");
 			return Plugin_Continue;
 		}
 	}
