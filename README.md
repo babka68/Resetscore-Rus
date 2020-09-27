@@ -47,7 +47,7 @@ Notification_Chat = CreateConVar("sm_Notification_Chat", =>  g_NotificationChat 
 - Изменил для "красоты"TimerNotification(Handle timer, any client) =>  Timer_Notification(Handle hTimer, any iClient)
 
 Обновление 1.4
-Исправлен error log "[SM] Exception reported: Client 17 is not in game"
-Добавил проверки:
-1. IsClientInGame - Возвращает, если в игру вошел определенный игрок.
-2. IsFakeClient - Возвращает, если определенный игрок является фальшивым клиентом.
+- Исправлен error log "[SM] Exception reported: Client 17 is not in game"
+- Добавил проверки:
+- IsClientInGame - Возвращает, если в игру вошел определенный игрок.
+- IsFakeClient - Возвращает, если определенный игрок является фальшивым клиентом.
