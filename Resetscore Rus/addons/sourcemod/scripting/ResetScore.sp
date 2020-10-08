@@ -1,4 +1,3 @@
-#include <sourcemod>
 #include <morecolors>
 
 #pragma newdecls required
@@ -11,7 +10,7 @@ public Plugin myinfo =
 	name = "ResetScore", 
 	author = "tuty, babka68", 
 	description = "Обнуление счета Убийств и смертей игроков", 
-	version = "1.4", 
+	version = "1.5", 
 	url = "http://tmb-css.ru https://hlmod.ru"
 };
 public void OnPluginStart()
@@ -56,16 +55,6 @@ public Action PerformCommand(int iClient, const char[] szCmd, int iArgs)
 		SetEntProp(iClient, Prop_Data, "m_iFrags", 0);
 		SetEntProp(iClient, Prop_Data, "m_iDeaths", 0);
 		CPrintToChat(iClient, "%t", "reset_success_chat");
-		
-		
-		GetClientName(iClient, szBuffer, sizeof(szBuffer));
-		for (int i = 1; i <= MaxClients; i++)
-		
-		if (i != iClient && IsClientInGame(i) && !IsFakeClient(i))
-		{
-			CPrintToChat(iClient, "%t", "reset_success_chat");
-			return Plugin_Continue;
-		}
 	}
 	return Plugin_Continue;
 }
