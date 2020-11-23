@@ -1,0 +1,17 @@
+﻿"Phrases"
+{
+    "Notification_chat"
+    {
+		"ru"            "{lime}[ResetScore] {white} Напишите в чате !rs,!кы,!resetscore,!куыуесщку для обнуления своего счёта."
+    }
+
+    "reset_already_chat"
+    {
+		"ru"            "{lime}[ResetScore] {white} Ваш счёт уже обнулён!"
+    }
+
+    "reset_success_chat"
+    {
+		"ru"            "{lime}[ResetScore] {white} Вы успешно обнулили свой счёт."
+    }
+}

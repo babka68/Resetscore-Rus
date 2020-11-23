@@ -1,0 +1,17 @@
+"Phrases"
+{
+    "Notification_chat"
+    {
+        "en"            "{green}[ResetScore] {default} Type in chat !rs,!resetscore to reset the score."
+    }
+
+    "reset_already_chat"
+    {
+        "en"            "{green}[ResetScore] {default} Your account has already been reset!"
+    }
+
+    "reset_success_chat"
+    {
+        "en"            "{green}[ResetScore] {default} You have successfully reseted your score."
+    }
+}

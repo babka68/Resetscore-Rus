@@ -1,0 +1,17 @@
+﻿"Phrases"
+{
+    "Notification_chat"
+    {
+		"ru"            "{GREEN}[ResetScore] {DEFAULT} Напишите в чате !rs,!кы,!resetscore,!куыуесщку для обнуления своего счёта."
+    }
+
+    "reset_already_chat"
+    {
+		"ru"            "{GREEN}[ResetScore] {DEFAULT} Ваш счёт уже обнулён!"
+    }
+
+    "reset_success_chat"
+    {
+		"ru"            "{GREEN}[ResetScore] {DEFAULT} Вы успешно обнулили свой счёт."
+    }
+}
