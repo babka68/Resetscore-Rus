@@ -43,8 +43,6 @@ public void OnPluginStart()
 	if (Engine_Version == GAME_CSS)LoadTranslations("resetscore_css.phrases");
 	if (Engine_Version == GAME_CSGO)LoadTranslations("resetscore_csgo.phrases");
 	
-	LoadTranslations("ResetScore.phrases");
-	
 	AddCommandListener(PerformCommand, "say");
 	AddCommandListener(PerformCommand, "say_team");
 	g_NotificationChat = CreateConVar("sm_notification_chat", "1", "// 1 - Включает, 0 - Отключить уведомление от плагина в чат.", _, true, 0.0, true, 1.0);
