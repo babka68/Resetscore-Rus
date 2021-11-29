@@ -1,11 +1,11 @@
 # ResetScore 1.4
-Описание: Обнуление счета Убийств и смертей игроков.
+Описание: Обнуление счета убийств и смертей игроков.
 
-Команды: !rs, !кы, !resetscore, !куыуесщку.
+- Команды: !rs, !кы, !resetscore, !куыуесщку.
 
 Cvar:
 sm_notification_chat "1" // 1 - Включает, 0 - Отключить уведомление о доступных командах от плагина.
-Установка:
+- Установка:
 1) Поместить ResetScore.smx по пути \addons\sourcemod\plugins
 2) (Не обязательно) Поместить ResetScore.sp по пути \addons\sourcemod\scripting
 3) Поместить ResetScore.phrases по пути \addons\sourcemod\translations
@@ -51,3 +51,10 @@ Notification_Chat = CreateConVar("sm_Notification_Chat", =>  g_NotificationChat 
 - Добавил проверки:
 - IsClientInGame - Возвращает, если в игру вошел определенный игрок.
 - IsFakeClient - Возвращает, если определенный игрок является фальшивым клиентом.
+
+- Контакты для связи при возникновении проблемы/предложений: 
+1. Discord babka68#4072
+2. Telegram https://t.me/babka68
+3. Вконтакте https://vk.com/id142504197
+4. WhatsApp: +7 (953) 124-71-33
+
