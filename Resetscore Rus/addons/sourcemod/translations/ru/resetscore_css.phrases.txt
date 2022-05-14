@@ -1,17 +1,21 @@
-﻿"Phrases"
+"Phrases"
 {
-    "Notification_chat"
+    "plugin_status"
     {
-		"ru"            "{lime}[ResetScore] {white} Напишите в чате !rs,!кы,!resetscore,!куыуесщку для обнуления своего счёта."
+		"ru"            "{lime} %s {white} Плагин отключен!"
+    }
+    "timer_notification_of_commands"
+    {
+		"ru"            "{lime} %s {white} Напишите в чате !rs,!кы,!resetscore,!куыуесщку для обнуления своего счёта."
     }
 
-    "reset_already_chat"
+    "points_already_null"
     {
-		"ru"            "{lime}[ResetScore] {white} Ваш счёт уже обнулён!"
+		"ru"            "{lime} %s {white} Ваш счёт уже обнулён!"
     }
 
-    "reset_success_chat"
+    "success_reset_points"
     {
-		"ru"            "{lime}[ResetScore] {white} Вы успешно обнулили свой счёт."
+		"ru"            "{lime} %s {white} Вы успешно обнулили свой счёт."
     }
 }

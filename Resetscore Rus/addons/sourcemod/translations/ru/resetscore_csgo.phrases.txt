@@ -1,17 +1,21 @@
-﻿"Phrases"
+"Phrases"
 {
-    "Notification_chat"
+    "plugin_status"
     {
-		"ru"            "{GREEN}[ResetScore] {DEFAULT} Напишите в чате !rs,!кы,!resetscore,!куыуесщку для обнуления своего счёта."
+		"ru"            "{GREEN} %s {DEFAULT} Плагин отключен!"
+    }
+    "timer_notification_of_commands"
+    {
+		"ru"            "{GREEN} %s {DEFAULT} Напишите в чате !rs,!кы,!resetscore,!куыуесщку для обнуления своего счёта."
     }
 
-    "reset_already_chat"
+    "points_already_null"
     {
-		"ru"            "{GREEN}[ResetScore] {DEFAULT} Ваш счёт уже обнулён!"
+		"ru"            "{GREEN} %s {DEFAULT} Ваш счёт уже обнулён!"
     }
 
-    "reset_success_chat"
+    "success_reset_points"
     {
-		"ru"            "{GREEN}[ResetScore] {DEFAULT} Вы успешно обнулили свой счёт."
+		"ru"            "{GREEN} %s {DEFAULT} Вы успешно обнулили свой счёт."
     }
 }

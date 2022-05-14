@@ -1,17 +1,21 @@
 "Phrases"
 {
-    "Notification_chat"
+    "plugin_status"
     {
-        "en"            "{GREEN}[ResetScore] {DEFAULT} Type in chat !rs,!resetscore to reset the score."
+		"ru"            "{GREEN} %s {GREEN} The plugin is disabled!"
+    }
+    "timer_notification_of_commands"
+    {
+        "en"            "{GREEN} %s {DEFAULT} Type in chat !rs,!resetscore to reset the score."
     }
 
-    "reset_already_chat"
+    "points_already_null"
     {
-        "en"            "{GREEN}[ResetScore] {DEFAULT} Your account has already been reset!"
+        "en"            "{GREEN} %s {DEFAULT} Your account has already been reset!"
     }
 
-    "reset_success_chat"
+    "success_reset_points"
     {
-        "en"            "{GREEN}[ResetScore] {DEFAULT} You have successfully reseted your score."
+        "en"            "{GREEN} %s {DEFAULT} You have successfully reseted your score."
     }
 }

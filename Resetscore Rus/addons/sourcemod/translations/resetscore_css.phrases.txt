@@ -1,17 +1,21 @@
 "Phrases"
 {
-    "Notification_chat"
+    "plugin_status"
     {
-        "en"            "{lime}[ResetScore] {white} Type in chat !rs,!resetscore to reset the score."
+		"ru"            "{lime} %s {white} The plugin is disabled!"
+    }
+    "timer_notification_of_commands"
+    {
+        "en"            "{lime} %s {white} Type in chat !rs,!resetscore to reset the score."
     }
 
-    "reset_already_chat"
+    "points_already_null"
     {
-        "en"            "{lime}[ResetScore] {white} Your account has already been reset!"
+        "en"            "{lime} %s {white} Your account has already been reset!"
     }
 
-    "reset_success_chat"
+    "success_reset_points"
     {
-        "en"            "{lime}[ResetScore] {white} You have successfully reseted your score."
+        "en"            "{lime} %s {white} You have successfully reseted your score."
     }
 }
