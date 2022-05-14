@@ -88,6 +88,9 @@ Notification_Chat = CreateConVar("sm_Notification_Chat", =>  g_NotificationChat 
 - Были изменены названия фраз в файлах перевода, на более логичные
 - Сделал пометку: // TODO: Сделать квар или файл, для написания желаемых команд.
 
+Обновление 1.6.2
+- Исправлена работа плагина на css v34, а именно:
+- В CSS V34 нет CS_GetMVPCount и CS_SetMVPCount, поэтому выбивало ошибку Exception reported: SetMVPCount is not supported on this game
 
 - Контакты для связи при возникновении проблемы/предложений: 
 1. Discord babka68#4072
