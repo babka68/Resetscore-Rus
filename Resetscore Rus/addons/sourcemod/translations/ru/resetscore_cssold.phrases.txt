@@ -1,20 +1,21 @@
 "Phrases"
 {
-    "plugin_status"
+	"plugin_status"
     {
 		"ru"            "{green} %s {default} Плагин отключен!"
     }
-    "timer_notification_of_commands"
+	
+	"timer_notification_of_commands"
     {
 		"ru"            "{green} %s {default} Напишите в чате !rs,!кы,!resetscore,!куыуесщку для обнуления своего счёта."
     }
-
-    "points_already_null"
+	
+	"points_already_null"
     {
 		"ru"            "{green} %s {default} Ваш счёт уже обнулён!"
     }
-
-    "success_reset_points"
+	
+	"success_reset_points"
     {
 		"ru"            "{green} %s {default} Вы успешно обнулили свой счёт."
     }

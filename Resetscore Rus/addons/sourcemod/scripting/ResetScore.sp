@@ -1,5 +1,6 @@
-#include <multicolors>
 #include <csgo_colors>
+#include <multicolors>   
+
 #include <cstrike>
 
 #pragma newdecls required
@@ -49,7 +50,7 @@ public Plugin myinfo =
 	name = "ResetScore", 
 	author = "tuty, babka68", 
 	description = "Плагин позволяет обнулять <Убийства> <Смерти> <Ассисты> <Звезды побед> <Общий счет>", 
-	version = "1.6.1", 
+	version = "1.6.2", 
 	url = "http://tmb-css.ru, https://hlmod.ru, https://vk.com/zakazserver68"
 };
 
@@ -144,12 +145,14 @@ public Action Timer_Notification_Of_Commands(Handle hTimer, any data)
 {
 	int client = GetClientOfUserId(data);
 	
-	if (IsClientInGame(client))
+	if (client && IsClientInGame(client))
 	{
+		
 		if (Engine_Version == GAME_CSGO)
 		{
 			CGOPrintToChat(client, "%t", "timer_notification_of_commands", g_sPrefix);
 		}
+		
 		else
 		{
 			CPrintToChat(client, "%t", "timer_notification_of_commands", g_sPrefix);
@@ -199,12 +202,13 @@ public Action PerformCommand(int client, const char[] szCmd, int iArgs)
 	if (g_bShow_Info_Reset)
 	{
 		
-		if (IsClientInGame(client) && !IsFakeClient(client) && GetClientFrags(client) == 0 && GetClientDeaths(client) == 0)
+		if (client && IsClientInGame(client) && !IsFakeClient(client) && GetClientFrags(client) == 0 && GetClientDeaths(client) == 0)
 		{
 			if (Engine_Version == GAME_CSGO && CS_GetClientAssists(client) == 0 && CS_GetClientContributionScore(client) == 0)
 			{
 				CGOPrintToChat(client, "%t", "points_already_null", g_sPrefix);
 			}
+			
 			// TODO: В CSS V34 нет CS_GetMVPCount
 			else if (Engine_Version == GAME_CSS && CS_GetMVPCount(client) == 0)
 			{
@@ -240,7 +244,7 @@ public Action PerformCommand(int client, const char[] szCmd, int iArgs)
 		
 		else
 		{
-			CPrintToChat(client, "%t", "success_reset_points", g_sPrefix);
+			CPrintToChat(client, "%t", "success_reset_points_Old", g_sPrefix);
 		}
 		
 		// Фраги
