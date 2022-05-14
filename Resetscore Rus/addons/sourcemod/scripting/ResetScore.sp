@@ -199,11 +199,17 @@ public Action PerformCommand(int client, const char[] szCmd, int iArgs)
 	if (g_bShow_Info_Reset)
 	{
 		
-		if (IsClientInGame(client) && !IsFakeClient(client) && GetClientFrags(client) == 0 && GetClientDeaths(client) == 0 && CS_GetMVPCount(client) == 0)
+		if (IsClientInGame(client) && !IsFakeClient(client) && GetClientFrags(client) == 0 && GetClientDeaths(client) == 0)
 		{
 			if (Engine_Version == GAME_CSGO && CS_GetClientAssists(client) == 0 && CS_GetClientContributionScore(client) == 0)
 			{
 				CGOPrintToChat(client, "%t", "points_already_null", g_sPrefix);
+			}
+			// TODO: В CSS V34 нет CS_GetMVPCount
+			else if (Engine_Version == GAME_CSS && CS_GetMVPCount(client) == 0)
+			{
+				
+				CPrintToChat(client, "%t", "points_already_null", g_sPrefix);
 			}
 			
 			else
@@ -213,13 +219,6 @@ public Action PerformCommand(int client, const char[] szCmd, int iArgs)
 			
 			return Plugin_Handled;
 		}
-		
-		// Фраги
-		SetEntProp(client, Prop_Data, "m_iFrags", 0);
-		// Смерти
-		SetEntProp(client, Prop_Data, "m_iDeaths", 0);
-		// Звезды побед
-		CS_SetMVPCount(client, 0);
 		
 		if (Engine_Version == GAME_CSGO)
 		{
@@ -231,10 +230,23 @@ public Action PerformCommand(int client, const char[] szCmd, int iArgs)
 			CGOPrintToChat(client, "%t", "success_reset_points", g_sPrefix);
 		}
 		
+		else if (Engine_Version == GAME_CSS)
+		{
+			// TODO: В CSS V34 нет CS_SetMVPCount
+			// Звезды побед
+			CS_SetMVPCount(client, 0);
+			CPrintToChat(client, "%t", "success_reset_points", g_sPrefix);
+		}
+		
 		else
 		{
 			CPrintToChat(client, "%t", "success_reset_points", g_sPrefix);
 		}
+		
+		// Фраги
+		SetEntProp(client, Prop_Data, "m_iFrags", 0);
+		// Смерти
+		SetEntProp(client, Prop_Data, "m_iDeaths", 0);
 	}
 	
 	return Plugin_Continue;
