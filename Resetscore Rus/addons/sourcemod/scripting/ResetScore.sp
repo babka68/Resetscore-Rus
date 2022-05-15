@@ -8,7 +8,6 @@
 
 // define Game Version
 #define GAME_UNDEFINED 0
-#define GAME_CSS_34 1
 #define GAME_CSS 2
 #define GAME_CSGO 3
 
@@ -37,7 +36,6 @@ int GetCSGame()
 	{
 		switch (GetEngineVersion())
 		{
-			case Engine_SourceSDK2006:return GAME_CSS_34;
 			case Engine_CSS:return GAME_CSS;
 			case Engine_CSGO:return GAME_CSGO;
 		}
@@ -50,7 +48,7 @@ public Plugin myinfo =
 	name = "ResetScore", 
 	author = "tuty, babka68", 
 	description = "Плагин позволяет обнулять <Убийства> <Смерти> <Ассисты> <Звезды побед> <Общий счет>", 
-	version = "1.6.2", 
+	version = "1.6.3", 
 	url = "http://tmb-css.ru, https://hlmod.ru, https://vk.com/zakazserver68"
 };
 
@@ -61,11 +59,6 @@ public void OnPluginStart()
 	if (Engine_Version == GAME_UNDEFINED)
 	{
 		SetFailState("Game is not supported!");
-	}
-	
-	if (Engine_Version == GAME_CSS_34)
-	{
-		LoadTranslations("resetscore_cssold.phrases");
 	}
 	
 	if (Engine_Version == GAME_CSS)
@@ -172,7 +165,6 @@ public Action PerformCommand(int client, const char[] szCmd, int iArgs)
 	{
 		if (Engine_Version == GAME_CSGO)
 		{
-			
 			CGOPrintToChat(client, "%t", "plugin_status", g_sPrefix);
 		}
 		
@@ -202,7 +194,7 @@ public Action PerformCommand(int client, const char[] szCmd, int iArgs)
 	if (g_bShow_Info_Reset)
 	{
 		
-		if (client && IsClientInGame(client) && !IsFakeClient(client) && GetClientFrags(client) == 0 && GetClientDeaths(client) == 0)
+		if (client && IsClientInGame(client) && !IsFakeClient(client) && GetClientFrags(client) == 0 && GetClientDeaths(client) == 0 && CS_GetMVPCount(client) == 0)
 		{
 			if (Engine_Version == GAME_CSGO && CS_GetClientAssists(client) == 0 && CS_GetClientContributionScore(client) == 0)
 			{
@@ -210,12 +202,6 @@ public Action PerformCommand(int client, const char[] szCmd, int iArgs)
 			}
 			
 			// TODO: В CSS V34 нет CS_GetMVPCount
-			else if (Engine_Version == GAME_CSS && CS_GetMVPCount(client) == 0)
-			{
-				
-				CPrintToChat(client, "%t", "points_already_null", g_sPrefix);
-			}
-			
 			else
 			{
 				CPrintToChat(client, "%t", "points_already_null", g_sPrefix);
@@ -233,20 +219,14 @@ public Action PerformCommand(int client, const char[] szCmd, int iArgs)
 			
 			CGOPrintToChat(client, "%t", "success_reset_points", g_sPrefix);
 		}
-		
-		else if (Engine_Version == GAME_CSS)
+		else
 		{
-			// TODO: В CSS V34 нет CS_SetMVPCount
-			// Звезды побед
-			CS_SetMVPCount(client, 0);
 			CPrintToChat(client, "%t", "success_reset_points", g_sPrefix);
 		}
 		
-		else
-		{
-			CPrintToChat(client, "%t", "success_reset_points_Old", g_sPrefix);
-		}
-		
+		// TODO: В CSS V34 нет CS_SetMVPCount
+		// Звезды побед
+		CS_SetMVPCount(client, 0);
 		// Фраги
 		SetEntProp(client, Prop_Data, "m_iFrags", 0);
 		// Смерти
