@@ -1,5 +1,5 @@
 # ResetScore 1.6.1
-Поддерживаемые игры	CS: Source (OrangeBox)CS: Source (v34)CS: GO
+Поддерживаемые игры	CS: Source (OrangeBox)CS: GO
 
 Описание: 
 - CSS: Обнуление самый ценный игрок(звезды) => убийств => смертей
