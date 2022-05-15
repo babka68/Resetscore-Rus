@@ -1,4 +1,4 @@
-# ResetScore 1.6.1
+# ResetScore
 Поддерживаемые игры	CS: Source (OrangeBox)CS: GO
 
 Описание: 
@@ -91,6 +91,12 @@ Notification_Chat = CreateConVar("sm_Notification_Chat", =>  g_NotificationChat 
 Обновление 1.6.2
 - Исправлена работа плагина на css v34, а именно:
 - В CSS V34 нет CS_GetMVPCount и CS_SetMVPCount, поэтому выбивало ошибку Exception reported: SetMVPCount is not supported on this game
+				   
+ Обновление 1.6.3
+- Убрал "поддержку" CSS v34, так как написал отдельную версию под неё с поддержкой ClientMod, подробнее тут https://hlmod.ru/resources/clientmod-resetscore.3772/
+- Удалил файлы переводов от 34 версии игры
+- Собственно убраны проверки на 34 версию игры
+- Проверил работоспособность на CSS:OB и CS:GO ошибок в работе не обнаружено
 
 - Контакты для связи при возникновении проблемы/предложений: 
 1. Discord babka68#4072
