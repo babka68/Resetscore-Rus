@@ -48,7 +48,7 @@ public Plugin myinfo =
 	name = "ResetScore", 
 	author = "tuty, babka68", 
 	description = "Плагин позволяет обнулять <Убийства> <Смерти> <Ассисты> <Звезды побед> <Общий счет>", 
-	version = "1.6.3", 
+	version = "1.6.4", 
 	url = "http://tmb-css.ru, https://hlmod.ru, https://vk.com/zakazserver68"
 };
 
@@ -70,9 +70,6 @@ public void OnPluginStart()
 	{
 		LoadTranslations("resetscore_csgo.phrases");
 	}
-	
-	AddCommandListener(PerformCommand, "say");
-	AddCommandListener(PerformCommand, "say_team");
 	
 	ConVar cvar;
 	cvar = CreateConVar("sm_enable", "1", "1 - Включить, 0 - Отключить плагин. (по умолчанию: 1)", _, true, 0.0, true, 1.0);
@@ -154,9 +151,16 @@ public Action Timer_Notification_Of_Commands(Handle hTimer, any data)
 	return Plugin_Handled;
 }
 
-public Action PerformCommand(int client, const char[] szCmd, int iArgs)
+public Action OnClientSayCommand(int client, const char[] command, const char[] args)
 {
 	if (!client)
+	{
+		return Plugin_Continue;
+	}
+	
+	// TODO: Сделать квар или файл, для написания желаемых команд.
+	// Сравнивает две строки лексиографически.
+	if (strcmp(args, "!rs") && strcmp(args, "!кы") && strcmp(args, "!resetscore") && strcmp(args, "!куыуесщку"))
 	{
 		return Plugin_Continue;
 	}
@@ -174,21 +178,6 @@ public Action PerformCommand(int client, const char[] szCmd, int iArgs)
 		}
 		
 		return Plugin_Handled;
-	}
-	
-	static char buffer[MAX_NAME_LENGTH];
-	// Извлекает всю строку аргумента команды одним куском из текущей консольной или серверной команды.
-	GetCmdArgString(buffer, sizeof(buffer));
-	// Удаляет пару кавычек из строки, если она существует.
-	StripQuotes(buffer);
-	// Удаляет пробельные символы из начала и конца строки.
-	TrimString(buffer);
-	
-	// TODO: Сделать квар или файл, для написания желаемых команд.
-	// Сравнивает две строки лексиографически.
-	if (strcmp(buffer, "!rs") && strcmp(buffer, "!кы") && strcmp(buffer, "!resetscore") && strcmp(buffer, "!куыуесщку"))
-	{
-		return Plugin_Continue;
 	}
 	
 	if (g_bShow_Info_Reset)
