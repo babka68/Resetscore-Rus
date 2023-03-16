@@ -1,4 +1,4 @@
-# ResetScore
+# ResetScore 1.6.4
 Поддерживаемые игры	CS: Source (OrangeBox)CS: GO
 
 Описание: 
